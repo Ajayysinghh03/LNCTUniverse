@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <div class="flex items-center space-x-4">
+            {% if student.profile_picture %}
+                <img src="{{ student.profile_picture.url }}" alt="Profile Picture" class="w-20 h-20 rounded-full object-cover">
+            {% else %}
+                <div class="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center text-gray-700">
+                    No Image
+                </div>
+            {% endif %}
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800">{{ student.username }}</h2>
+                <p class="text-gray-500">{{ student.enrollment_number }}</p>
+            </div>
+        </div>
+        
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-700">Personal Information</h3>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+                <p><strong>Gender:</strong> {{ student.gender }}</p>
+                <p><strong>Date of Birth:</strong> {{ student.date_of_birth }}</p>
+                <p><strong>Phone:</strong> {{ student.phone_number }}</p>
+                <p><strong>Address:</strong> {{ student.address }}</p>
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-700">Academic Details</h3>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+                <p><strong>Department:</strong> {{ student.department }}</p>
+                <p><strong>Course:</strong> {{ student.course }}</p>
+                <p><strong>Year:</strong> {{ student.year }}</p>
+                <p><strong>Semester:</strong> {{ student.semester }}</p>
+                <p><strong>CGPA:</strong> {{ student.cgpa }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
