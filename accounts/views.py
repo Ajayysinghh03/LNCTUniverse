@@ -11,7 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 @login_required
 def student_profile(request):
     student = StudentProfile.objects.get(username=request.user.username)
-    return render(request, 'accounts/student_profile.html', {'student': student})
+    return render(request, 'accounts/students/student_profile.html', {'student': student})
 
 
 def login_view(request):
@@ -27,7 +27,7 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     
-    return render(request, "accounts/student_login.html", {"form": form})
+    return render(request, "accounts/students/student_login.html", {"form": form})
 
 def logout_view(request):
     if request.method == "POST":
@@ -40,7 +40,13 @@ from .models import StudentProfile, Timetable, Announcement
 def dashboard(request): 
     timetable = Timetable.objects.all()
     announcements = Announcement.objects.all()
-    return render(request, "accounts/student_dashboard.html", {
+    return render(request, "accounts/students/student_dashboard.html", {
         "timetable": timetable,
         "announcements": announcements
     })
+
+def fees(request):
+    return HttpResponse("Fees page is under construction.")
+
+def attendance(request):
+    return HttpResponse("Attendance page is under construction.")
